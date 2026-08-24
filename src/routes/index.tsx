@@ -158,6 +158,7 @@ const quickActions = [
   { label: "Diagnostic tests", to: "/diagnostics", icon: Microscope, note: "Lab, imaging & packages" },
   { label: "Patient portal", to: "/portal", icon: Activity, note: "Demo interface" },
   { label: "Emergency", to: "/emergency", icon: Siren, note: "Phone, address, directions" },
+  { label: "Patient resources", to: "/resources", icon: Stethoscope, note: "Before, during & after" },
 ];
 
 function QuickActions() {
