@@ -11,15 +11,21 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AccessibilityRouteImport } from './routes/accessibility'
 import { Route as AppointmentsRouteImport } from './routes/appointments'
+import { Route as BlogRouteImport } from './routes/blog'
+import { Route as CareersRouteImport } from './routes/careers'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DiagnosticsRouteImport } from './routes/diagnostics'
 import { Route as EmergencyRouteImport } from './routes/emergency'
 import { Route as FaqRouteImport } from './routes/faq'
+import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as InsuranceRouteImport } from './routes/insurance'
 import { Route as PortalRouteImport } from './routes/portal'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as DoctorsIndexRouteImport } from './routes/doctors.index'
 import { Route as DoctorsDoctorIdRouteImport } from './routes/doctors.$doctorId'
 
@@ -33,9 +39,24 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AccessibilityRoute = AccessibilityRouteImport.update({
+  id: '/accessibility',
+  path: '/accessibility',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppointmentsRoute = AppointmentsRouteImport.update({
   id: '/appointments',
   path: '/appointments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareersRoute = CareersRouteImport.update({
+  id: '/careers',
+  path: '/careers',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -58,6 +79,11 @@ const FaqRoute = FaqRouteImport.update({
   path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const InsuranceRoute = InsuranceRouteImport.update({
   id: '/insurance',
   path: '/insurance',
@@ -68,6 +94,11 @@ const PortalRoute = PortalRouteImport.update({
   path: '/portal',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ResourcesRoute = ResourcesRouteImport.update({
   id: '/resources',
   path: '/resources',
@@ -76,6 +107,11 @@ const ResourcesRoute = ResourcesRouteImport.update({
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DoctorsIndexRoute = DoctorsIndexRouteImport.update({
@@ -92,30 +128,42 @@ const DoctorsDoctorIdRoute = DoctorsDoctorIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/accessibility': typeof AccessibilityRoute
   '/appointments': typeof AppointmentsRoute
+  '/blog': typeof BlogRoute
+  '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/diagnostics': typeof DiagnosticsRoute
   '/emergency': typeof EmergencyRoute
   '/faq': typeof FaqRoute
+  '/gallery': typeof GalleryRoute
   '/insurance': typeof InsuranceRoute
   '/portal': typeof PortalRoute
+  '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRoute
   '/services': typeof ServicesRoute
+  '/terms': typeof TermsRoute
   '/doctors/$doctorId': typeof DoctorsDoctorIdRoute
   '/doctors/': typeof DoctorsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/accessibility': typeof AccessibilityRoute
   '/appointments': typeof AppointmentsRoute
+  '/blog': typeof BlogRoute
+  '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/diagnostics': typeof DiagnosticsRoute
   '/emergency': typeof EmergencyRoute
   '/faq': typeof FaqRoute
+  '/gallery': typeof GalleryRoute
   '/insurance': typeof InsuranceRoute
   '/portal': typeof PortalRoute
+  '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRoute
   '/services': typeof ServicesRoute
+  '/terms': typeof TermsRoute
   '/doctors/$doctorId': typeof DoctorsDoctorIdRoute
   '/doctors': typeof DoctorsIndexRoute
 }
@@ -123,15 +171,21 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/accessibility': typeof AccessibilityRoute
   '/appointments': typeof AppointmentsRoute
+  '/blog': typeof BlogRoute
+  '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/diagnostics': typeof DiagnosticsRoute
   '/emergency': typeof EmergencyRoute
   '/faq': typeof FaqRoute
+  '/gallery': typeof GalleryRoute
   '/insurance': typeof InsuranceRoute
   '/portal': typeof PortalRoute
+  '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRoute
   '/services': typeof ServicesRoute
+  '/terms': typeof TermsRoute
   '/doctors/$doctorId': typeof DoctorsDoctorIdRoute
   '/doctors/': typeof DoctorsIndexRoute
 }
@@ -140,45 +194,63 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/accessibility'
     | '/appointments'
+    | '/blog'
+    | '/careers'
     | '/contact'
     | '/diagnostics'
     | '/emergency'
     | '/faq'
+    | '/gallery'
     | '/insurance'
     | '/portal'
+    | '/privacy'
     | '/resources'
     | '/services'
+    | '/terms'
     | '/doctors/$doctorId'
     | '/doctors/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/accessibility'
     | '/appointments'
+    | '/blog'
+    | '/careers'
     | '/contact'
     | '/diagnostics'
     | '/emergency'
     | '/faq'
+    | '/gallery'
     | '/insurance'
     | '/portal'
+    | '/privacy'
     | '/resources'
     | '/services'
+    | '/terms'
     | '/doctors/$doctorId'
     | '/doctors'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/accessibility'
     | '/appointments'
+    | '/blog'
+    | '/careers'
     | '/contact'
     | '/diagnostics'
     | '/emergency'
     | '/faq'
+    | '/gallery'
     | '/insurance'
     | '/portal'
+    | '/privacy'
     | '/resources'
     | '/services'
+    | '/terms'
     | '/doctors/$doctorId'
     | '/doctors/'
   fileRoutesById: FileRoutesById
@@ -186,15 +258,21 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AccessibilityRoute: typeof AccessibilityRoute
   AppointmentsRoute: typeof AppointmentsRoute
+  BlogRoute: typeof BlogRoute
+  CareersRoute: typeof CareersRoute
   ContactRoute: typeof ContactRoute
   DiagnosticsRoute: typeof DiagnosticsRoute
   EmergencyRoute: typeof EmergencyRoute
   FaqRoute: typeof FaqRoute
+  GalleryRoute: typeof GalleryRoute
   InsuranceRoute: typeof InsuranceRoute
   PortalRoute: typeof PortalRoute
+  PrivacyRoute: typeof PrivacyRoute
   ResourcesRoute: typeof ResourcesRoute
   ServicesRoute: typeof ServicesRoute
+  TermsRoute: typeof TermsRoute
   DoctorsDoctorIdRoute: typeof DoctorsDoctorIdRoute
   DoctorsIndexRoute: typeof DoctorsIndexRoute
 }
@@ -215,11 +293,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/accessibility': {
+      id: '/accessibility'
+      path: '/accessibility'
+      fullPath: '/accessibility'
+      preLoaderRoute: typeof AccessibilityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/appointments': {
       id: '/appointments'
       path: '/appointments'
       fullPath: '/appointments'
       preLoaderRoute: typeof AppointmentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/careers': {
+      id: '/careers'
+      path: '/careers'
+      fullPath: '/careers'
+      preLoaderRoute: typeof CareersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -250,6 +349,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/insurance': {
       id: '/insurance'
       path: '/insurance'
@@ -264,6 +370,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortalRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/resources': {
       id: '/resources'
       path: '/resources'
@@ -276,6 +389,13 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/doctors/': {
@@ -298,15 +418,21 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AccessibilityRoute: AccessibilityRoute,
   AppointmentsRoute: AppointmentsRoute,
+  BlogRoute: BlogRoute,
+  CareersRoute: CareersRoute,
   ContactRoute: ContactRoute,
   DiagnosticsRoute: DiagnosticsRoute,
   EmergencyRoute: EmergencyRoute,
   FaqRoute: FaqRoute,
+  GalleryRoute: GalleryRoute,
   InsuranceRoute: InsuranceRoute,
   PortalRoute: PortalRoute,
+  PrivacyRoute: PrivacyRoute,
   ResourcesRoute: ResourcesRoute,
   ServicesRoute: ServicesRoute,
+  TermsRoute: TermsRoute,
   DoctorsDoctorIdRoute: DoctorsDoctorIdRoute,
   DoctorsIndexRoute: DoctorsIndexRoute,
 }
