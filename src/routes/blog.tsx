@@ -24,7 +24,8 @@ export const Route = createFileRoute("/blog")({
 const images = [consultImage, labImage];
 
 function BlogPage() {
-  const [lead, ...rest] = posts;
+  const lead = posts[0]!;
+  const rest = posts.slice(1);
 
   return (
     <>
@@ -40,7 +41,7 @@ function BlogPage() {
       <Shell className="py-12 sm:py-16">
         <article className="grid gap-8 border-b border-hairline pb-12 lg:grid-cols-2 lg:gap-16">
           <img
-            src={images[0]}
+            src={images[0]!}
             width={1200}
             height={900}
             loading="lazy"

@@ -29,15 +29,13 @@ export function SearchDialog({ open, onOpenChange }: { open: boolean; onOpenChan
   const go = (to: string, hash?: string) => {
     onOpenChange(false);
     setQuery("");
-    void navigate({ to, hash });
+    void navigate(hash ? ({ to, hash } as never) : ({ to } as never));
   };
 
   return (
     <CommandDialog
       open={open}
       onOpenChange={onOpenChange}
-      title="Search Rehan Clinic"
-      description="Search doctors, services, diagnostics, resources and articles"
     >
       <CommandInput
         value={query}

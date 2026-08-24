@@ -45,14 +45,14 @@ function AppointmentsPage() {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [form, setForm] = useState({ name: "", phone: "", email: "", reason: "" });
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<{ name?: string; phone?: string; email?: string }>({});
   const [status, setStatus] = useState<"idle" | "loading" | "done">("idle");
   const days = nextDays(8);
 
   const canContinue = [Boolean(care), Boolean(date), Boolean(time), true, true][step];
 
   const validate = () => {
-    const e: Record<string, string> = {};
+    const e: { name?: string; phone?: string; email?: string } = {};
     if (form.name.trim().length < 2) e.name = "Please enter your full name.";
     if (form.phone.trim().length < 6) e.phone = "Please enter a contact number we can reach you on.";
     if (form.email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email)) e.email = "Please check the email address.";
