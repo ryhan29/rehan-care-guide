@@ -26,13 +26,13 @@ const categories: ServiceCategory[] = ["Primary Care", "Diagnostics", "Imaging",
 function ServicesPage() {
   const [category, setCategory] = useState<ServiceCategory>("Primary Care");
   const [query, setQuery] = useState("");
-  const [activeSlug, setActiveSlug] = useState(services[0].slug);
+  const [activeSlug, setActiveSlug] = useState(services[0]!.slug);
 
   const inCategory = services.filter((s) => s.category === category);
   const searched = query
     ? services.filter((s) => `${s.name} ${s.category} ${s.what}`.toLowerCase().includes(query.toLowerCase()))
     : inCategory;
-  const active = services.find((s) => s.slug === activeSlug) ?? searched[0] ?? services[0];
+  const active = services.find((s) => s.slug === activeSlug) ?? searched[0] ?? services[0]!;
 
   return (
     <>

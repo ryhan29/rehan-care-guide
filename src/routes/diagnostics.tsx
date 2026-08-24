@@ -27,9 +27,9 @@ const groups = ["Laboratory", "Imaging", "Packages"] as const;
 
 function DiagnosticsPage() {
   const [group, setGroup] = useState<(typeof groups)[number]>("Laboratory");
-  const [activeSlug, setActiveSlug] = useState(diagnosticTests[0].slug);
+  const [activeSlug, setActiveSlug] = useState(diagnosticTests[0]!.slug);
   const list = diagnosticTests.filter((t) => t.group === group);
-  const active = diagnosticTests.find((t) => t.slug === activeSlug) ?? list[0];
+  const active = diagnosticTests.find((t) => t.slug === activeSlug) ?? list[0] ?? diagnosticTests[0]!;
 
   return (
     <>
