@@ -138,7 +138,6 @@ function DoctorsPage() {
                   variant="outline"
                   size="sm"
                   className="mt-3 w-full"
-                  search={undefined}
                 >
                   Book appointment
                 </ActionLink>

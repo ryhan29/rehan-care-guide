@@ -67,8 +67,8 @@ export function Reveal({
     const node = ref.current;
     if (!node) return;
     const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
           setVisible(true);
           io.disconnect();
         }
@@ -79,16 +79,17 @@ export function Reveal({
     return () => io.disconnect();
   }, []);
 
+  const Element = Tag as "div";
+
   return (
-    // @ts-expect-error polymorphic ref
-    <Tag
-      ref={ref}
+    <Element
+      ref={ref as React.RefObject<HTMLDivElement>}
       data-visible={visible}
       style={{ transitionDelay: `${delay}ms` }}
       className={cn("reveal", className)}
     >
       {children}
-    </Tag>
+    </Element>
   );
 }
 
