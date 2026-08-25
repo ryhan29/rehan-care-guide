@@ -24,6 +24,7 @@ import { Route as TermsRouteImport } from './routes/terms'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogPostSlugRouteImport } from './routes/blog.$postSlug'
 import { Route as CareersIndexRouteImport } from './routes/careers.index'
+import { Route as CareersJobIdRouteImport } from './routes/careers.$jobId'
 import { Route as DiagnosticsIndexRouteImport } from './routes/diagnostics.index'
 import { Route as DiagnosticsTestSlugRouteImport } from './routes/diagnostics.$testSlug'
 import { Route as DoctorsIndexRouteImport } from './routes/doctors.index'
@@ -107,6 +108,11 @@ const CareersIndexRoute = CareersIndexRouteImport.update({
   path: '/careers/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CareersJobIdRoute = CareersJobIdRouteImport.update({
+  id: '/careers/$jobId',
+  path: '/careers/$jobId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DiagnosticsIndexRoute = DiagnosticsIndexRouteImport.update({
   id: '/diagnostics/',
   path: '/diagnostics/',
@@ -157,6 +163,7 @@ export interface FileRoutesByFullPath {
   '/resources': typeof ResourcesRoute
   '/terms': typeof TermsRoute
   '/blog/$postSlug': typeof BlogPostSlugRoute
+  '/careers/$jobId': typeof CareersJobIdRoute
   '/diagnostics/$testSlug': typeof DiagnosticsTestSlugRoute
   '/doctors/$doctorId': typeof DoctorsDoctorIdRoute
   '/services/$serviceSlug': typeof ServicesServiceSlugRoute
@@ -181,6 +188,7 @@ export interface FileRoutesByTo {
   '/resources': typeof ResourcesRoute
   '/terms': typeof TermsRoute
   '/blog/$postSlug': typeof BlogPostSlugRoute
+  '/careers/$jobId': typeof CareersJobIdRoute
   '/diagnostics/$testSlug': typeof DiagnosticsTestSlugRoute
   '/doctors/$doctorId': typeof DoctorsDoctorIdRoute
   '/services/$serviceSlug': typeof ServicesServiceSlugRoute
@@ -206,6 +214,7 @@ export interface FileRoutesById {
   '/resources': typeof ResourcesRoute
   '/terms': typeof TermsRoute
   '/blog/$postSlug': typeof BlogPostSlugRoute
+  '/careers/$jobId': typeof CareersJobIdRoute
   '/diagnostics/$testSlug': typeof DiagnosticsTestSlugRoute
   '/doctors/$doctorId': typeof DoctorsDoctorIdRoute
   '/services/$serviceSlug': typeof ServicesServiceSlugRoute
@@ -232,6 +241,7 @@ export interface FileRouteTypes {
     | '/resources'
     | '/terms'
     | '/blog/$postSlug'
+    | '/careers/$jobId'
     | '/diagnostics/$testSlug'
     | '/doctors/$doctorId'
     | '/services/$serviceSlug'
@@ -256,6 +266,7 @@ export interface FileRouteTypes {
     | '/resources'
     | '/terms'
     | '/blog/$postSlug'
+    | '/careers/$jobId'
     | '/diagnostics/$testSlug'
     | '/doctors/$doctorId'
     | '/services/$serviceSlug'
@@ -280,6 +291,7 @@ export interface FileRouteTypes {
     | '/resources'
     | '/terms'
     | '/blog/$postSlug'
+    | '/careers/$jobId'
     | '/diagnostics/$testSlug'
     | '/doctors/$doctorId'
     | '/services/$serviceSlug'
@@ -305,6 +317,7 @@ export interface RootRouteChildren {
   ResourcesRoute: typeof ResourcesRoute
   TermsRoute: typeof TermsRoute
   BlogPostSlugRoute: typeof BlogPostSlugRoute
+  CareersJobIdRoute: typeof CareersJobIdRoute
   DiagnosticsTestSlugRoute: typeof DiagnosticsTestSlugRoute
   DoctorsDoctorIdRoute: typeof DoctorsDoctorIdRoute
   ServicesServiceSlugRoute: typeof ServicesServiceSlugRoute
@@ -423,6 +436,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CareersIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/careers/$jobId': {
+      id: '/careers/$jobId'
+      path: '/careers/$jobId'
+      fullPath: '/careers/$jobId'
+      preLoaderRoute: typeof CareersJobIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/diagnostics/': {
       id: '/diagnostics/'
       path: '/diagnostics'
@@ -489,6 +509,7 @@ const rootRouteChildren: RootRouteChildren = {
   ResourcesRoute: ResourcesRoute,
   TermsRoute: TermsRoute,
   BlogPostSlugRoute: BlogPostSlugRoute,
+  CareersJobIdRoute: CareersJobIdRoute,
   DiagnosticsTestSlugRoute: DiagnosticsTestSlugRoute,
   DoctorsDoctorIdRoute: DoctorsDoctorIdRoute,
   ServicesServiceSlugRoute: ServicesServiceSlugRoute,
