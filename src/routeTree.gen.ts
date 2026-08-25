@@ -18,6 +18,7 @@ import { Route as EmergencyRouteImport } from './routes/emergency'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as InsuranceRouteImport } from './routes/insurance'
+import { Route as LocationsRouteImport } from './routes/locations'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as TermsRouteImport } from './routes/terms'
@@ -77,6 +78,11 @@ const GalleryRoute = GalleryRouteImport.update({
 const InsuranceRoute = InsuranceRouteImport.update({
   id: '/insurance',
   path: '/insurance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocationsRoute = LocationsRouteImport.update({
+  id: '/locations',
+  path: '/locations',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -165,6 +171,7 @@ export interface FileRoutesByFullPath {
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
   '/insurance': typeof InsuranceRoute
+  '/locations': typeof LocationsRoute
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRoute
   '/terms': typeof TermsRoute
@@ -191,6 +198,7 @@ export interface FileRoutesByTo {
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
   '/insurance': typeof InsuranceRoute
+  '/locations': typeof LocationsRoute
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRoute
   '/terms': typeof TermsRoute
@@ -218,6 +226,7 @@ export interface FileRoutesById {
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
   '/insurance': typeof InsuranceRoute
+  '/locations': typeof LocationsRoute
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRoute
   '/terms': typeof TermsRoute
@@ -246,6 +255,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/gallery'
     | '/insurance'
+    | '/locations'
     | '/privacy'
     | '/resources'
     | '/terms'
@@ -272,6 +282,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/gallery'
     | '/insurance'
+    | '/locations'
     | '/privacy'
     | '/resources'
     | '/terms'
@@ -298,6 +309,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/gallery'
     | '/insurance'
+    | '/locations'
     | '/privacy'
     | '/resources'
     | '/terms'
@@ -325,6 +337,7 @@ export interface RootRouteChildren {
   FaqRoute: typeof FaqRoute
   GalleryRoute: typeof GalleryRoute
   InsuranceRoute: typeof InsuranceRoute
+  LocationsRoute: typeof LocationsRoute
   PrivacyRoute: typeof PrivacyRoute
   ResourcesRoute: typeof ResourcesRoute
   TermsRoute: typeof TermsRoute
@@ -405,6 +418,13 @@ declare module '@tanstack/react-router' {
       path: '/insurance'
       fullPath: '/insurance'
       preLoaderRoute: typeof InsuranceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/locations': {
+      id: '/locations'
+      path: '/locations'
+      fullPath: '/locations'
+      preLoaderRoute: typeof LocationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -525,6 +545,7 @@ const rootRouteChildren: RootRouteChildren = {
   FaqRoute: FaqRoute,
   GalleryRoute: GalleryRoute,
   InsuranceRoute: InsuranceRoute,
+  LocationsRoute: LocationsRoute,
   PrivacyRoute: PrivacyRoute,
   ResourcesRoute: ResourcesRoute,
   TermsRoute: TermsRoute,
