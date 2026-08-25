@@ -5,7 +5,7 @@ import labImage from "@/assets/lab.jpg";
 import { Note, PageHeader, Shell } from "@/components/site/primitives";
 import { posts } from "@/data/clinic";
 
-export const Route = createFileRoute("/blog")({
+export const Route = createFileRoute("/blog/")({
   head: () => ({
     meta: [
       { title: "Health Knowledge Centre — Rehan Clinic Blog" },
