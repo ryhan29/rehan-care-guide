@@ -7,7 +7,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { ActionLink, Eyebrow, Note, PageHeader, Shell } from "@/components/site/primitives";
 import { diagnosticTests } from "@/data/clinic";
 
-export const Route = createFileRoute("/diagnostics")({
+export const Route = createFileRoute("/diagnostics/")({
   head: () => ({
     meta: [
       { title: "Diagnostics — Blood, Urine & Imaging | Rehan Clinic" },

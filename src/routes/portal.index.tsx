@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import { Action, ActionLink, Eyebrow, Note, PageHeader, Shell } from "@/components/site/primitives";
 
-export const Route = createFileRoute("/portal")({
+export const Route = createFileRoute("/portal/")({
   head: () => ({
     meta: [
       { title: "Patient Portal (Demo) — Rehan Clinic" },

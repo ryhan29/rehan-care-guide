@@ -5,7 +5,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { ActionLink, Eyebrow, PageHeader, Shell } from "@/components/site/primitives";
 import { services, type ServiceCategory } from "@/data/clinic";
 
-export const Route = createFileRoute("/services")({
+export const Route = createFileRoute("/services/")({
   head: () => ({
     meta: [
       { title: "Services — Rehan Clinic" },

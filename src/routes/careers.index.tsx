@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ActionLink, Note, PageHeader, Shell } from "@/components/site/primitives";
 import { jobs } from "@/data/clinic";
 
-export const Route = createFileRoute("/careers")({
+export const Route = createFileRoute("/careers/")({
   head: () => ({
     meta: [
       { title: "Careers — Work at Rehan Clinic" },
