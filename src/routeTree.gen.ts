@@ -30,6 +30,7 @@ import { Route as DiagnosticsTestSlugRouteImport } from './routes/diagnostics.$t
 import { Route as DoctorsIndexRouteImport } from './routes/doctors.index'
 import { Route as DoctorsDoctorIdRouteImport } from './routes/doctors.$doctorId'
 import { Route as PortalIndexRouteImport } from './routes/portal.index'
+import { Route as PortalResultsRouteImport } from './routes/portal.results'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesServiceSlugRouteImport } from './routes/services.$serviceSlug'
 
@@ -138,6 +139,11 @@ const PortalIndexRoute = PortalIndexRouteImport.update({
   path: '/portal/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PortalResultsRoute = PortalResultsRouteImport.update({
+  id: '/portal/results',
+  path: '/portal/results',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesIndexRoute = ServicesIndexRouteImport.update({
   id: '/services/',
   path: '/services/',
@@ -166,6 +172,7 @@ export interface FileRoutesByFullPath {
   '/careers/$jobId': typeof CareersJobIdRoute
   '/diagnostics/$testSlug': typeof DiagnosticsTestSlugRoute
   '/doctors/$doctorId': typeof DoctorsDoctorIdRoute
+  '/portal/results': typeof PortalResultsRoute
   '/services/$serviceSlug': typeof ServicesServiceSlugRoute
   '/blog/': typeof BlogIndexRoute
   '/careers/': typeof CareersIndexRoute
@@ -191,6 +198,7 @@ export interface FileRoutesByTo {
   '/careers/$jobId': typeof CareersJobIdRoute
   '/diagnostics/$testSlug': typeof DiagnosticsTestSlugRoute
   '/doctors/$doctorId': typeof DoctorsDoctorIdRoute
+  '/portal/results': typeof PortalResultsRoute
   '/services/$serviceSlug': typeof ServicesServiceSlugRoute
   '/blog': typeof BlogIndexRoute
   '/careers': typeof CareersIndexRoute
@@ -217,6 +225,7 @@ export interface FileRoutesById {
   '/careers/$jobId': typeof CareersJobIdRoute
   '/diagnostics/$testSlug': typeof DiagnosticsTestSlugRoute
   '/doctors/$doctorId': typeof DoctorsDoctorIdRoute
+  '/portal/results': typeof PortalResultsRoute
   '/services/$serviceSlug': typeof ServicesServiceSlugRoute
   '/blog/': typeof BlogIndexRoute
   '/careers/': typeof CareersIndexRoute
@@ -244,6 +253,7 @@ export interface FileRouteTypes {
     | '/careers/$jobId'
     | '/diagnostics/$testSlug'
     | '/doctors/$doctorId'
+    | '/portal/results'
     | '/services/$serviceSlug'
     | '/blog/'
     | '/careers/'
@@ -269,6 +279,7 @@ export interface FileRouteTypes {
     | '/careers/$jobId'
     | '/diagnostics/$testSlug'
     | '/doctors/$doctorId'
+    | '/portal/results'
     | '/services/$serviceSlug'
     | '/blog'
     | '/careers'
@@ -294,6 +305,7 @@ export interface FileRouteTypes {
     | '/careers/$jobId'
     | '/diagnostics/$testSlug'
     | '/doctors/$doctorId'
+    | '/portal/results'
     | '/services/$serviceSlug'
     | '/blog/'
     | '/careers/'
@@ -320,6 +332,7 @@ export interface RootRouteChildren {
   CareersJobIdRoute: typeof CareersJobIdRoute
   DiagnosticsTestSlugRoute: typeof DiagnosticsTestSlugRoute
   DoctorsDoctorIdRoute: typeof DoctorsDoctorIdRoute
+  PortalResultsRoute: typeof PortalResultsRoute
   ServicesServiceSlugRoute: typeof ServicesServiceSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
   CareersIndexRoute: typeof CareersIndexRoute
@@ -478,6 +491,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortalIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/portal/results': {
+      id: '/portal/results'
+      path: '/portal/results'
+      fullPath: '/portal/results'
+      preLoaderRoute: typeof PortalResultsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/': {
       id: '/services/'
       path: '/services'
@@ -512,6 +532,7 @@ const rootRouteChildren: RootRouteChildren = {
   CareersJobIdRoute: CareersJobIdRoute,
   DiagnosticsTestSlugRoute: DiagnosticsTestSlugRoute,
   DoctorsDoctorIdRoute: DoctorsDoctorIdRoute,
+  PortalResultsRoute: PortalResultsRoute,
   ServicesServiceSlugRoute: ServicesServiceSlugRoute,
   BlogIndexRoute: BlogIndexRoute,
   CareersIndexRoute: CareersIndexRoute,
