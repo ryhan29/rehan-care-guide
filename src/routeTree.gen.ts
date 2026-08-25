@@ -28,6 +28,7 @@ import { Route as DoctorsIndexRouteImport } from './routes/doctors.index'
 import { Route as DoctorsDoctorIdRouteImport } from './routes/doctors.$doctorId'
 import { Route as PortalIndexRouteImport } from './routes/portal.index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as ServicesServiceSlugRouteImport } from './routes/services.$serviceSlug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -124,6 +125,11 @@ const ServicesIndexRoute = ServicesIndexRouteImport.update({
   path: '/services/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesServiceSlugRoute = ServicesServiceSlugRouteImport.update({
+  id: '/services/$serviceSlug',
+  path: '/services/$serviceSlug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -139,6 +145,7 @@ export interface FileRoutesByFullPath {
   '/resources': typeof ResourcesRoute
   '/terms': typeof TermsRoute
   '/doctors/$doctorId': typeof DoctorsDoctorIdRoute
+  '/services/$serviceSlug': typeof ServicesServiceSlugRoute
   '/blog/': typeof BlogIndexRoute
   '/careers/': typeof CareersIndexRoute
   '/diagnostics/': typeof DiagnosticsIndexRoute
@@ -160,6 +167,7 @@ export interface FileRoutesByTo {
   '/resources': typeof ResourcesRoute
   '/terms': typeof TermsRoute
   '/doctors/$doctorId': typeof DoctorsDoctorIdRoute
+  '/services/$serviceSlug': typeof ServicesServiceSlugRoute
   '/blog': typeof BlogIndexRoute
   '/careers': typeof CareersIndexRoute
   '/diagnostics': typeof DiagnosticsIndexRoute
@@ -182,6 +190,7 @@ export interface FileRoutesById {
   '/resources': typeof ResourcesRoute
   '/terms': typeof TermsRoute
   '/doctors/$doctorId': typeof DoctorsDoctorIdRoute
+  '/services/$serviceSlug': typeof ServicesServiceSlugRoute
   '/blog/': typeof BlogIndexRoute
   '/careers/': typeof CareersIndexRoute
   '/diagnostics/': typeof DiagnosticsIndexRoute
@@ -205,6 +214,7 @@ export interface FileRouteTypes {
     | '/resources'
     | '/terms'
     | '/doctors/$doctorId'
+    | '/services/$serviceSlug'
     | '/blog/'
     | '/careers/'
     | '/diagnostics/'
@@ -226,6 +236,7 @@ export interface FileRouteTypes {
     | '/resources'
     | '/terms'
     | '/doctors/$doctorId'
+    | '/services/$serviceSlug'
     | '/blog'
     | '/careers'
     | '/diagnostics'
@@ -247,6 +258,7 @@ export interface FileRouteTypes {
     | '/resources'
     | '/terms'
     | '/doctors/$doctorId'
+    | '/services/$serviceSlug'
     | '/blog/'
     | '/careers/'
     | '/diagnostics/'
@@ -269,6 +281,7 @@ export interface RootRouteChildren {
   ResourcesRoute: typeof ResourcesRoute
   TermsRoute: typeof TermsRoute
   DoctorsDoctorIdRoute: typeof DoctorsDoctorIdRoute
+  ServicesServiceSlugRoute: typeof ServicesServiceSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
   CareersIndexRoute: typeof CareersIndexRoute
   DiagnosticsIndexRoute: typeof DiagnosticsIndexRoute
@@ -412,6 +425,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/$serviceSlug': {
+      id: '/services/$serviceSlug'
+      path: '/services/$serviceSlug'
+      fullPath: '/services/$serviceSlug'
+      preLoaderRoute: typeof ServicesServiceSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -429,6 +449,7 @@ const rootRouteChildren: RootRouteChildren = {
   ResourcesRoute: ResourcesRoute,
   TermsRoute: TermsRoute,
   DoctorsDoctorIdRoute: DoctorsDoctorIdRoute,
+  ServicesServiceSlugRoute: ServicesServiceSlugRoute,
   BlogIndexRoute: BlogIndexRoute,
   CareersIndexRoute: CareersIndexRoute,
   DiagnosticsIndexRoute: DiagnosticsIndexRoute,
