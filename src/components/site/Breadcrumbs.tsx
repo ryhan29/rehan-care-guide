@@ -34,7 +34,7 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
                   </span>
                 )}
                 {!last ? (
-                  <span aria-hidden className="text-hairline-strong">
+                  <span aria-hidden className="text-muted-foreground/60">
                     /
                   </span>
                 ) : null}
