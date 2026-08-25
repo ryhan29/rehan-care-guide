@@ -22,6 +22,7 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as BlogPostSlugRouteImport } from './routes/blog.$postSlug'
 import { Route as CareersIndexRouteImport } from './routes/careers.index'
 import { Route as DiagnosticsIndexRouteImport } from './routes/diagnostics.index'
 import { Route as DiagnosticsTestSlugRouteImport } from './routes/diagnostics.$testSlug'
@@ -96,6 +97,11 @@ const BlogIndexRoute = BlogIndexRouteImport.update({
   path: '/blog/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogPostSlugRoute = BlogPostSlugRouteImport.update({
+  id: '/blog/$postSlug',
+  path: '/blog/$postSlug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CareersIndexRoute = CareersIndexRouteImport.update({
   id: '/careers/',
   path: '/careers/',
@@ -150,6 +156,7 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRoute
   '/terms': typeof TermsRoute
+  '/blog/$postSlug': typeof BlogPostSlugRoute
   '/diagnostics/$testSlug': typeof DiagnosticsTestSlugRoute
   '/doctors/$doctorId': typeof DoctorsDoctorIdRoute
   '/services/$serviceSlug': typeof ServicesServiceSlugRoute
@@ -173,6 +180,7 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRoute
   '/terms': typeof TermsRoute
+  '/blog/$postSlug': typeof BlogPostSlugRoute
   '/diagnostics/$testSlug': typeof DiagnosticsTestSlugRoute
   '/doctors/$doctorId': typeof DoctorsDoctorIdRoute
   '/services/$serviceSlug': typeof ServicesServiceSlugRoute
@@ -197,6 +205,7 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRoute
   '/terms': typeof TermsRoute
+  '/blog/$postSlug': typeof BlogPostSlugRoute
   '/diagnostics/$testSlug': typeof DiagnosticsTestSlugRoute
   '/doctors/$doctorId': typeof DoctorsDoctorIdRoute
   '/services/$serviceSlug': typeof ServicesServiceSlugRoute
@@ -222,6 +231,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/resources'
     | '/terms'
+    | '/blog/$postSlug'
     | '/diagnostics/$testSlug'
     | '/doctors/$doctorId'
     | '/services/$serviceSlug'
@@ -245,6 +255,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/resources'
     | '/terms'
+    | '/blog/$postSlug'
     | '/diagnostics/$testSlug'
     | '/doctors/$doctorId'
     | '/services/$serviceSlug'
@@ -268,6 +279,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/resources'
     | '/terms'
+    | '/blog/$postSlug'
     | '/diagnostics/$testSlug'
     | '/doctors/$doctorId'
     | '/services/$serviceSlug'
@@ -292,6 +304,7 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   ResourcesRoute: typeof ResourcesRoute
   TermsRoute: typeof TermsRoute
+  BlogPostSlugRoute: typeof BlogPostSlugRoute
   DiagnosticsTestSlugRoute: typeof DiagnosticsTestSlugRoute
   DoctorsDoctorIdRoute: typeof DoctorsDoctorIdRoute
   ServicesServiceSlugRoute: typeof ServicesServiceSlugRoute
@@ -396,6 +409,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/$postSlug': {
+      id: '/blog/$postSlug'
+      path: '/blog/$postSlug'
+      fullPath: '/blog/$postSlug'
+      preLoaderRoute: typeof BlogPostSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/careers/': {
       id: '/careers/'
       path: '/careers'
@@ -468,6 +488,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   ResourcesRoute: ResourcesRoute,
   TermsRoute: TermsRoute,
+  BlogPostSlugRoute: BlogPostSlugRoute,
   DiagnosticsTestSlugRoute: DiagnosticsTestSlugRoute,
   DoctorsDoctorIdRoute: DoctorsDoctorIdRoute,
   ServicesServiceSlugRoute: ServicesServiceSlugRoute,
