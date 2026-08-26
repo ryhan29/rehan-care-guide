@@ -21,6 +21,7 @@ import { Route as InsuranceRouteImport } from './routes/insurance'
 import { Route as LocationsRouteImport } from './routes/locations'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ResourcesRouteImport } from './routes/resources'
+import { Route as SearchRouteImport } from './routes/search'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogPostSlugRouteImport } from './routes/blog.$postSlug'
@@ -93,6 +94,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
 const ResourcesRoute = ResourcesRouteImport.update({
   id: '/resources',
   path: '/resources',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TermsRoute = TermsRouteImport.update({
@@ -174,6 +180,7 @@ export interface FileRoutesByFullPath {
   '/locations': typeof LocationsRoute
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRoute
+  '/search': typeof SearchRoute
   '/terms': typeof TermsRoute
   '/blog/$postSlug': typeof BlogPostSlugRoute
   '/careers/$jobId': typeof CareersJobIdRoute
@@ -201,6 +208,7 @@ export interface FileRoutesByTo {
   '/locations': typeof LocationsRoute
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRoute
+  '/search': typeof SearchRoute
   '/terms': typeof TermsRoute
   '/blog/$postSlug': typeof BlogPostSlugRoute
   '/careers/$jobId': typeof CareersJobIdRoute
@@ -229,6 +237,7 @@ export interface FileRoutesById {
   '/locations': typeof LocationsRoute
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRoute
+  '/search': typeof SearchRoute
   '/terms': typeof TermsRoute
   '/blog/$postSlug': typeof BlogPostSlugRoute
   '/careers/$jobId': typeof CareersJobIdRoute
@@ -258,6 +267,7 @@ export interface FileRouteTypes {
     | '/locations'
     | '/privacy'
     | '/resources'
+    | '/search'
     | '/terms'
     | '/blog/$postSlug'
     | '/careers/$jobId'
@@ -285,6 +295,7 @@ export interface FileRouteTypes {
     | '/locations'
     | '/privacy'
     | '/resources'
+    | '/search'
     | '/terms'
     | '/blog/$postSlug'
     | '/careers/$jobId'
@@ -312,6 +323,7 @@ export interface FileRouteTypes {
     | '/locations'
     | '/privacy'
     | '/resources'
+    | '/search'
     | '/terms'
     | '/blog/$postSlug'
     | '/careers/$jobId'
@@ -340,6 +352,7 @@ export interface RootRouteChildren {
   LocationsRoute: typeof LocationsRoute
   PrivacyRoute: typeof PrivacyRoute
   ResourcesRoute: typeof ResourcesRoute
+  SearchRoute: typeof SearchRoute
   TermsRoute: typeof TermsRoute
   BlogPostSlugRoute: typeof BlogPostSlugRoute
   CareersJobIdRoute: typeof CareersJobIdRoute
@@ -439,6 +452,13 @@ declare module '@tanstack/react-router' {
       path: '/resources'
       fullPath: '/resources'
       preLoaderRoute: typeof ResourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/terms': {
@@ -548,6 +568,7 @@ const rootRouteChildren: RootRouteChildren = {
   LocationsRoute: LocationsRoute,
   PrivacyRoute: PrivacyRoute,
   ResourcesRoute: ResourcesRoute,
+  SearchRoute: SearchRoute,
   TermsRoute: TermsRoute,
   BlogPostSlugRoute: BlogPostSlugRoute,
   CareersJobIdRoute: CareersJobIdRoute,
